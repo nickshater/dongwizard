@@ -1,0 +1,30 @@
+{"park": "Yankee Stadium", "home_team": "nyy", "hr_factor": 1.377}
+{"park": "Chase Field", "home_team": "ari", "hr_factor": 1.292}
+{"park": "Coors Field", "home_team": "col", "hr_factor": 1.265}
+{"park": "Great American Ball Park", "home_team": "cin", "hr_factor": 1.175}
+{"park": "Progressive Field", "home_team": "cle", "hr_factor": 1.168}
+{"park": "Safeco Field", "home_team": "sea", "hr_factor": 1.158}
+{"park": "Citizens Bank Park", "home_team": "phi", "hr_factor": 1.149}
+{"park": "Comerica Park", "home_team": "det", "hr_factor": 1.138}
+{"park": "Miller Park", "home_team": "mil", "hr_factor": 1.126}
+{"park": "Guaranteed Rate Field", "home_team": "chw", "hr_factor": 1.101}
+{"park": "Citi Field", "home_team": "nym", "hr_factor": 1.090}
+{"park": "Fenway Park", "home_team": "bos", "hr_factor": 1.065}
+{"park": "Angel Stadium of Anaheim", "home_team": "laa", "hr_factor": 1.056}
+{"park": "Globe Life Park", "home_team": "tex", "hr_factor": 1.049}
+{"park": "Nationals Park", "home_team": "was", "hr_factor": 1.023}
+{"park": "Target Field", "home_team": "min", "hr_factor": 1.014}
+{"park": "Rogers Centre", "home_team": "tor", "hr_factor": 1.010}
+{"park": "Oriole Park at Camden Yards", "home_team": "bal", "hr_factor": 1.009}
+{"park": "Petco Park", "home_team": "sd", "hr_factor": 0.957}
+{"park": "Dodger Stadium", "home_team": "la", "hr_factor": 0.914}
+{"park": "Busch Stadium", "home_team": "stl", "hr_factor": 0.901}
+{"park": "Tropicana Field", "home_team": "tb", "hr_factor": 0.877}
+{"park": "Minute Maid Park", "home_team": "hou", "hr_factor": 0.822}
+{"park": "Wrigley Field", "home_team": "chc", "hr_factor": 0.819}
+{"park": "PNC Park", "home_team": "pit", "hr_factor": 0.800}
+{"park": "Marlins Park", "home_team": "mia", "hr_factor": 0.793}
+{"park": "Kauffman Stadium", "home_team": "kc", "hr_factor": 0.783}
+{"park": "Turner Field", "home_team": "atl", "hr_factor": 0.770}
+{"park": "Oakland Coliseum", "home_team": "oak", "hr_factor": 0.727}
+{"park": "AT&T Park", "home_team": "sf", "hr_factor": 0.704}
