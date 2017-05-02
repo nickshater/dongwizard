@@ -282,13 +282,26 @@ type TeamStatsBySeason struct {
 
 //Roster is the return data from a return search
 type Roster struct {
+	Team    string `json:"Team"`
 	Players []struct {
 		FirstName            string `json:"first_name"`
 		LastName             string `json:"last_name"`
 		Handedness           string `json:"handedness"`
 		Name                 string `json:"name"`
 		PositionAbbreviation string `json:"position_abbreviation"`
-		PositionName         string `json:"position_name"`
 		Slug                 string `json:"slug"`
 	} `json:"players"`
+}
+
+//MgoRoster is type for passing to mgodb
+type MgoRoster struct {
+	Team    string `json:"Team"`
+	Players []struct {
+		FirstName            string `json:"FirstName"`
+		LastName             string `json:"LastName"`
+		Handedness           string `json:"Handedness"`
+		Name                 string `json:"Name"`
+		PositionAbbreviation string `json:"PositionAbbreviation"`
+		Slug                 string `json:"Slug"`
+	} `json:"Players"`
 }

@@ -3,8 +3,8 @@ package db
 import (
 	"fmt"
 
-	"github.com/nickshater/ns/etcd"
-	"github.com/nickshater/ns/types"
+	"github.com/nickshater/dongwizard/etcd"
+	"github.com/nickshater/dongwizard/types"
 
 	mgo "gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
@@ -91,4 +91,18 @@ func ReturnTeamsForRosterSearch() []string {
 		teams = append(teams, "mlb-"+res[a].HomeTeam)
 	}
 	return teams
+}
+
+//UpdateMngRosters will add a roster to the db if not existing and update if it does
+func UpdateMngRosters(rosters []types.MgoRoster) {
+	s := GetSession()
+	defer s.Close()
+
+	c := s.DB("dongwizard").C("rosters")
+	for i := 0; i < len(rosters); i++ {
+		_, err := c.Upsert(bson.M{"Team": rosters[i].Team}, &rosters[i])
+		if err != nil {
+			fmt.Println("UpdateMngByDate Error", err)
+		}
+	}
 }

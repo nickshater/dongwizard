@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nickshater/ns/db"
-	"github.com/nickshater/ns/types"
+	"github.com/nickshater/dongwizard/db"
+	"github.com/nickshater/dongwizard/types"
 )
 
 const (
@@ -218,12 +218,15 @@ func PrintTheResults() {
 //Can go on the backburner
 func GetPitcherData() {
 	teams := db.ReturnTeamsForRosterSearch()
-	for i := range teams {
+	var r []types.MgoRoster
 
+	for i := 0; i < len(teams); i++ {
+		var d types.Roster
 		var uri = "https://api.stattleship.com/baseball/mlb/rosters?team_id=" + teams[i]
 		client := &http.Client{}
 		key := os.Getenv("STATTLESHIP")
 
+		d.Team = teams[i]
 		request, err := http.NewRequest("GET", uri, nil)
 		request.Header.Set("Content-Type", "application/json")
 		request.Header.Set("Authorization", key)
@@ -238,12 +241,11 @@ func GetPitcherData() {
 		}
 		defer resp.Body.Close()
 
-		var d types.Roster
 		err = json.Unmarshal(results, &d)
 		if err != nil {
 			fmt.Println("Unmarshal error", err)
 		}
-		fmt.Println(d.Players[0].FirstName)
-
+		r = append(r, types.MgoRoster(d))
 	}
+	db.UpdateMngRosters(r)
 }

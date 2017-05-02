@@ -5,11 +5,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/nickshater/ns/web"
+	"github.com/nickshater/dongwizard/web"
 )
 
 func main() {
-	// data.GetPitcherData()
 	http.HandleFunc("/", web.TodayHandler)
 	http.HandleFunc("/tomorrow", web.TomorrowHandler)
 	http.HandleFunc("/yesterday", web.YesterdayHandler)
