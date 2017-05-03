@@ -106,3 +106,28 @@ func UpdateMngRosters(rosters []types.MgoRoster) {
 		}
 	}
 }
+
+//GetPitcherSlug returns the player slug for a searched for pitcher
+func GetPitcherSlug(team string, lastname string) string {
+	s := GetSession()
+	defer s.Close()
+	var r struct {
+		players []struct {
+			firstname            string `bson:"firstname"`
+			lastname             string `bson:"lastname"`
+			handedness           string `bson:"handedness"`
+			name                 string `bson:"name"`
+			positionabbreviation string `bson:"positionabbreviation"`
+			slug                 string `bson:"slug"`
+		} `bson:"players"`
+	}
+	c := s.DB("dongwizard").C("rosters")
+	err := c.Find(bson.M{"team": team}).Select(bson.M{"players": bson.M{"$elemMatch": bson.M{"lastname": lastname}}}).One(&r)
+
+	if err != nil {
+		fmt.Println("GetPitcherSlug error ", err)
+	}
+	slug := "slug"
+	fmt.Println(len(r.players))
+	return slug
+}
