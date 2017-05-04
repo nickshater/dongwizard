@@ -112,22 +112,26 @@ func GetPitcherSlug(team string, lastname string) string {
 	s := GetSession()
 	defer s.Close()
 	var r struct {
-		players []struct {
-			firstname            string `bson:"firstname"`
-			lastname             string `bson:"lastname"`
-			handedness           string `bson:"handedness"`
-			name                 string `bson:"name"`
-			positionabbreviation string `bson:"positionabbreviation"`
-			slug                 string `bson:"slug"`
+		Players []struct {
+			Firstname            string `bson:"firstname"`
+			Lastname             string `bson:"lastname"`
+			Handedness           string `bson:"handedness"`
+			Name                 string `bson:"name"`
+			Positionabbreviation string `bson:"positionabbreviation"`
+			Slug                 string `bson:"slug"`
 		} `bson:"players"`
 	}
 	c := s.DB("dongwizard").C("rosters")
 	err := c.Find(bson.M{"team": team}).Select(bson.M{"players": bson.M{"$elemMatch": bson.M{"lastname": lastname}}}).One(&r)
 
+	var slug string
 	if err != nil {
 		fmt.Println("GetPitcherSlug error ", err)
+		slug = "unknown"
+		return slug
 	}
-	slug := "slug"
-	fmt.Println(len(r.players))
+
+	slug = r.Players[0].Slug
+	fmt.Println(slug)
 	return slug
 }

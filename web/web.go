@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"net/http"
 
-	data "github.com/nickshater/ns/data"
-	"github.com/nickshater/ns/db"
+	data "github.com/nickshater/dongwizard/data"
+	"github.com/nickshater/dongwizard/db"
 )
 
 //TodayHandler returns the JSON data at the index

@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	db.GetPitcherSlug("mlb-tor", "Loveless")
+	db.GetPitcherSlug("Urias", "mlb-la")
 	http.HandleFunc("/", web.TodayHandler)
 	http.HandleFunc("/tomorrow", web.TomorrowHandler)
 	http.HandleFunc("/yesterday", web.YesterdayHandler)

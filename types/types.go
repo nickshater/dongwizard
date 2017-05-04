@@ -9,10 +9,12 @@ type Game struct {
 	Time          string  `json:"EventTime"`
 	OU            float32 `json:"OU"`
 	HomePitcher   string  `json:"HomePrimaryPlayer"`
-	AwayPItcher   string  `json:"VisitorPrimaryPlayer"`
-	HomeHand      string  `json:"HomePitcherThrows"`
-	AwayHand      string  `json:"VisitorPitcherThrows"`
-	Stadium       string  `json:"StadiumName"`
+	AwayPitcher   string  `json:"VisitorPrimaryPlayer"`
+	HomeSlug      string
+	AwaySlug      string
+	HomeHand      string `json:"HomePitcherThrows"`
+	AwayHand      string `json:"VisitorPitcherThrows"`
+	Stadium       string `json:"StadiumName"`
 	HRFactor      float64
 	PPD           bool    `json:"IsPPD"`
 	EventTitle    string  `json:"EventTitle"`
@@ -46,7 +48,9 @@ type GameJSON struct {
 	Time          string  `json:"Time"`
 	OU            float32 `json:"OU"`
 	HomePitcher   string  `json:"HomePitcher"`
-	AwayPItcher   string  `json:"AwayPitcher"`
+	AwayPitcher   string  `json:"AwayPitcher"`
+	HomeSlug      string  `json:"HomeSlug"`
+	AwaySlug      string  `json:"AwaySlug"`
 	HomeHand      string  `json:"HomeHand"`
 	AwayHand      string  `json:"AwayHand"`
 	Stadium       string  `json:"Stadium"`

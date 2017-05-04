@@ -142,6 +142,16 @@ func MergeSlateData(d []types.Game) []types.GameJSON {
 			la = "la"
 		}
 
+		hLstName := strings.Fields(d[i].HomePitcher)
+		// aLstName := strings.Fields(d[i].AwayPitcher)
+		hidx := (len(hLstName) - 1)
+		htmslg := "mlb-" + lh
+		fmt.Println(hLstName[hidx])
+		// aidx := (len(aLstName) - 1)
+		hpslug := db.GetPitcherSlug(htmslg, hLstName[hidx])
+		// apslug := db.GetPitcherSlug("mlb-"+la, aLstName[len(aLstName)-1])
+		d[i].HomeSlug = hpslug
+		// d[i].AwaySlug = apslug
 		hm := GetTeamSeasonData(lh)
 		d[i].HomeBatStats.BatK9 = hm.TeamSeasonStats[0].StrikeoutsPer9Innings
 		d[i].HomeBatStats.BatISO = hm.TeamSeasonStats[0].Iso
@@ -164,7 +174,6 @@ func MergeSlateData(d []types.Game) []types.GameJSON {
 //GetTeamSeasonData connects to the stattleship API to return k/9 and calc hr/9
 func GetTeamSeasonData(team string) types.TeamStatsBySeason {
 	var uri = "https://api.stattleship.com/baseball/mlb/team_season_stats?on=today&team_id=mlb-" + team
-	fmt.Println(uri)
 	client := &http.Client{}
 	key := os.Getenv("STATTLESHIP")
 
