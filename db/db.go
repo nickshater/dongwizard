@@ -127,11 +127,11 @@ func GetPitcherSlug(team string, lastname string) string {
 	var slug string
 	if err != nil {
 		fmt.Println("GetPitcherSlug error ", err)
-		slug = "unknown"
-		return slug
 	}
-
-	slug = r.Players[0].Slug
-	fmt.Println(slug)
+	if len(r.Players) == 0 {
+		slug = "unknown"
+	} else {
+		slug = r.Players[0].Slug
+	}
 	return slug
 }

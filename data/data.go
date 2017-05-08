@@ -143,15 +143,18 @@ func MergeSlateData(d []types.Game) []types.GameJSON {
 		}
 
 		hLstName := strings.Fields(d[i].HomePitcher)
-		// aLstName := strings.Fields(d[i].AwayPitcher)
+		aLstName := strings.Fields(d[i].AwayPitcher)
+
 		hidx := (len(hLstName) - 1)
 		htmslg := "mlb-" + lh
-		fmt.Println(hLstName[hidx])
-		// aidx := (len(aLstName) - 1)
 		hpslug := db.GetPitcherSlug(htmslg, hLstName[hidx])
-		// apslug := db.GetPitcherSlug("mlb-"+la, aLstName[len(aLstName)-1])
 		d[i].HomeSlug = hpslug
-		// d[i].AwaySlug = apslug
+
+		aidx := (len(aLstName) - 1)
+		atmslg := "mlb-" + la
+		apslug := db.GetPitcherSlug(atmslg, aLstName[aidx])
+		d[i].AwaySlug = apslug
+
 		hm := GetTeamSeasonData(lh)
 		d[i].HomeBatStats.BatK9 = hm.TeamSeasonStats[0].StrikeoutsPer9Innings
 		d[i].HomeBatStats.BatISO = hm.TeamSeasonStats[0].Iso

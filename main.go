@@ -5,12 +5,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/nickshater/dongwizard/db"
 	"github.com/nickshater/dongwizard/web"
 )
 
 func main() {
-	db.GetPitcherSlug("Urias", "mlb-la")
 	http.HandleFunc("/", web.TodayHandler)
 	http.HandleFunc("/tomorrow", web.TomorrowHandler)
 	http.HandleFunc("/yesterday", web.YesterdayHandler)
